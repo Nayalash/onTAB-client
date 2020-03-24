@@ -9,7 +9,7 @@ class CustomCardList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        color: Colors.deepOrange,
+        color: Colors.black,
         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
         child: ListTile(
           leading: Icon(
@@ -25,7 +25,10 @@ class CustomCardList extends StatelessWidget {
           ),
           subtitle: Text(
               "\$${price.toStringAsFixed(2)} \n" +
-              "${id}"
+              "${id}",
+            style: TextStyle(
+              color: Colors.white
+            ),
           ),
         )
     );

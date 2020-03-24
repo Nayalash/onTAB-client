@@ -23,7 +23,11 @@ class _AddScreenState extends State<AddScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white70,
+      appBar: AppBar(
+        title: Text("Add Expense"),
+        backgroundColor: Colors.white70,
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(top: 100, left: 50, right: 50, bottom: 10),
@@ -60,7 +64,7 @@ class _AddScreenState extends State<AddScreen> {
                 ),
 
                 SizedBox(
-                  height: 150,
+                  height: 100,
                 ),
 
                 RoundedButton(

@@ -16,7 +16,7 @@ class onTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: HistoryScreen.id,
+      initialRoute: WelcomeScreen.id,
       routes: {
         WelcomeScreen.id : (context) => WelcomeScreen(),
         LoginScreen.id: (context) => LoginScreen(),

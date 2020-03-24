@@ -1,9 +1,16 @@
 class PostController {
-  final String id;
-  final String title;
-  final double price;
-  final int v;
+  String id;
+  String title;
+  var price;
+  String v;
 
-  PostController({this.id, this.title, this.price, this.v});
+  PostController(this.id, this.title, this.price, this.v);
+
+  PostController.fromJson(Map<String, dynamic> json) {
+    id = json['_id'];
+    title = json['title'];
+    price = json['price'];
+    v = json["_v"];
+  }
 
 }
