@@ -7,9 +7,6 @@ import 'screens/login/register_screen.dart';
 import 'screens/app/home_screen.dart';
 import 'screens/app/history_screen.dart';
 
-
-
-
 void main() => runApp(onTab());
 
 class onTab extends StatelessWidget {

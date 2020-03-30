@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:on_tab/utils/post_controller.dart';
+import 'package:on_tab/utils/token.dart' as getToken;
 
 class HistoryScreen extends StatefulWidget {
   static const String id = 'history_screen';
@@ -20,8 +21,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     var url = "http://localhost:8000/api/posts/get/";
 
     var response = await http.get(url, headers: {
-      "auth-token":
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTc3Yzc1ZjYxMGU1ODI3MDBhYTgzOWMiLCJpYXQiOjE1ODQ5ODM4MzN9.4s2AhDUIshWRzShRMOmF-1Jns9FWPsIJv9MQV7qg65I",
+      "auth-token": getToken.token
     });
 
     var posts = List<PostController>();
@@ -34,6 +34,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
     }
     return posts;
   }
+
+
 
   @override
   void initState() {
@@ -51,16 +53,31 @@ class _HistoryScreenState extends State<HistoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: Text('Expense History'),
+          iconTheme: IconThemeData(
+            color: Colors.black, //change your color here
+          ),
+          backgroundColor: Colors.white,
+          title: Text(
+              'Expense History',
+            style: TextStyle(
+              color: Colors.black
+            ),
+          ),
         ),
-        backgroundColor: Colors.white70,
+        backgroundColor: Colors.white,
         body: ListView.builder(
           itemBuilder: (context, index) {
-            return CustomCardList(
-              title: _post[index].title,
-              price: _post[index].price,
-              id: _post[index].id,
+            return FlatButton(
+              child: CustomCardList(
+                title: _post[index].title,
+                price: (_post[index].price).toDouble(),
+                id: _post[index].id,
+              ),
+              onLongPress: () => {
+
+                //TODO: HTTP DELETE REQUEST
+
+              },
             );
           },
           itemCount: _post.length,

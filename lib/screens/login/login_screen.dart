@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:on_tab/components/rounded_buttons.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-import 'package:on_tab/screens/app/add_screen.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:on_tab/screens/app/home_screen.dart';
 import 'package:on_tab/styles/constants.dart';
+import 'package:on_tab/utils/token.dart' as getToken;
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -71,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               RoundedButton(
                 title: "Log In",
-                colour: Colors.lightBlueAccent,
+                colour: Colors.black,
                 onPressed: () async {
                   //HTTP REQUEST
 
@@ -85,12 +86,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   String token = json.decode(response.body)["token"];
 
+                  getToken.token = token;
+
 
                   if (status == 200) {
                     Navigator.pushNamed(context, HomeScreen.id);
                   } else {
                     print("SHOW POPUP");
-                    //TODO: ADD POPUP
+
                   }
                   
                 },

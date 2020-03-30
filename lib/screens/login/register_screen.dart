@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:on_tab/components/rounded_buttons.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-import 'package:on_tab/screens/app/add_screen.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:on_tab/screens/login/welcome_screen.dart';
 import 'package:on_tab/styles/constants.dart';
 import 'package:http/http.dart' as http;
@@ -20,7 +20,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   String password;
 
   String token;
-
 
   @override
   Widget build(BuildContext context) {
@@ -72,10 +71,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
               RoundedButton(
                 title: "Register",
-                colour: Colors.blueAccent,
+                colour: Colors.black,
                 onPressed: () async {
                   //HTTP REQUEST
-
 
                   var url = 'http://localhost:8000/api/user/register';
 
@@ -89,9 +87,23 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     Navigator.pushNamed(context, WelcomeScreen.id);
                   } else {
                     print("SHOW POPUP");
-                    //TODO: ADD POPUP
+                    Alert(
+                      context: context,
+                      type: AlertType.error,
+                      title: "Invalid Entry",
+                      desc: "Enter a proper email and password",
+                      buttons: [
+                        DialogButton(
+                          child: Text(
+                            "Okay",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () => Navigator.pop(context),
+                          width: 120,
+                        )
+                      ],
+                    ).show();
                   }
-
                 },
               ),
             ],

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:on_tab/screens/app/home_screen.dart';
 import 'package:on_tab/styles/constants.dart';
 import 'package:on_tab/components/rounded_buttons.dart';
-
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:on_tab/utils/token.dart' as getToken;
 
 
 class AddScreen extends StatefulWidget {
@@ -23,10 +23,18 @@ class _AddScreenState extends State<AddScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white70,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Add Expense"),
-        backgroundColor: Colors.white70,
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        title: Text(
+            "Add Expense",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        backgroundColor: Colors.white,
       ),
       body: SafeArea(
         child: Padding(
@@ -69,7 +77,7 @@ class _AddScreenState extends State<AddScreen> {
 
                 RoundedButton(
                   title: "Submit",
-                  colour: Colors.lightBlueAccent,
+                  colour: Colors.black,
                   onPressed: () async {
                     //HTTP REQUEST
 
@@ -77,7 +85,7 @@ class _AddScreenState extends State<AddScreen> {
                     var response = await http.post(url, body: json.encode({"title": expense, "price": price}),
                         headers: {
                       "Content-Type": "application/json",
-                          "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTc3Yzc1ZjYxMGU1ODI3MDBhYTgzOWMiLCJpYXQiOjE1ODQ5ODM4MzN9.4s2AhDUIshWRzShRMOmF-1Jns9FWPsIJv9MQV7qg65I",
+                          "auth-token": getToken.token,
                     });
 
                     var status = response.statusCode;
