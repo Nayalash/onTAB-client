@@ -39,6 +39,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
         _post.addAll(value);
       });
     });
+
     super.initState();
   }
 
@@ -64,11 +65,23 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 price: (_post[index].price).toDouble(),
                 id: _post[index].id,
               ),
-              onPressed: () async {
-                var url = "http://localhost:8000/${_post[index].id}";
+              onLongPress: () async{
+                print("ID: ${_post[index].id}");
 
-                var response = await http.delete(url,
-                    headers: {"Authorization": "Bearer ${getToken.token}"});
+                var url = "http://localhost:8000/tasks/${_post[index].id}";
+
+                http.Response response = await http.delete(url, headers: {
+                  "Authorization": "Bearer ${getToken.token}"
+                });
+
+                //then get posts
+                final newPosts = await getPosts();
+                setState(() {
+                  _post.clear();
+                  _post.addAll(newPosts);// or whatever it is to clear
+                });
+
+
               },
             );
           },

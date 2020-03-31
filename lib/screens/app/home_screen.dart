@@ -16,23 +16,34 @@ class _HomeScreenState extends State<HomeScreen> {
 
   double money;
 
-  void totalCalc() async {
+  Future totalCalc() async {
+
+
     var url = "http://localhost:8000/tasks";
     var response = await http.get(url, headers: {
       "Authorization": "Bearer ${getToken.token}"
     });
+
+
     var jsonData = json.decode(response.body);
     double total = 0.00;
     for (var p in jsonData) {
       var price = p["price"].toDouble();
       total = price + total;
     }
-    money = total;
+
+    setState(() {
+      money = total;
+    });
   }
 
   @override
   void initState() {
-    totalCalc();
+    money = 0.00;
+    setState(() {
+      totalCalc();
+    });
+
     super.initState();
   }
 
@@ -76,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Text(
-                "\$${money}",
+                "\$${money.toStringAsFixed(2)}",
                 style: TextStyle(
                   fontFamily: "SigmarOne",
                   fontSize: 64,
