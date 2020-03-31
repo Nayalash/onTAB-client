@@ -81,16 +81,16 @@ class _AddScreenState extends State<AddScreen> {
                   onPressed: () async {
                     //HTTP REQUEST
 
-                    var url = 'http://localhost:8000/api/posts/add';
-                    var response = await http.post(url, body: json.encode({"title": expense, "price": price}),
+                    var url = 'http://localhost:8000/tasks';
+                    var response = await http.post(url, body: json.encode({"description": expense, "price": price}),
                         headers: {
                       "Content-Type": "application/json",
-                          "auth-token": getToken.token,
+                          "Authorization": "Bearer ${getToken.token}"
                     });
 
                     var status = response.statusCode;
 
-                    if (status == 200) {
+                    if (status == 201) {
                       Navigator.pushNamed(context, HomeScreen.id);
                     }
 

@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () async {
                   //HTTP REQUEST
 
-                  var url = 'http://localhost:8000/api/user/login';
+                  var url = 'http://localhost:8000/users/login';
 
                   var response = await http.post(url,
                       body: json.encode({"email": email, "password": password}),

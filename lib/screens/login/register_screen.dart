@@ -75,7 +75,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 onPressed: () async {
                   //HTTP REQUEST
 
-                  var url = 'http://localhost:8000/api/user/register';
+                  var url = 'http://localhost:8000/users';
 
                   var response = await http.post(url,
                       body: json.encode({"email": email, "password": password}),
@@ -83,7 +83,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
                   var status = response.statusCode;
 
-                  if (status == 200) {
+                  if (status == 201) {
                     Navigator.pushNamed(context, WelcomeScreen.id);
                   } else {
                     print("SHOW POPUP");

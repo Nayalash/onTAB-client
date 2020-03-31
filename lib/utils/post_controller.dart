@@ -8,7 +8,7 @@ class PostController {
 
   PostController.fromJson(Map<String, dynamic> json) {
     id = json['_id'];
-    title = json['title'];
+    title = json['description'];
     price = json['price'];
     v = json["_v"];
   }

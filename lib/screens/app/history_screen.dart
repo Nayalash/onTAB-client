@@ -14,15 +14,13 @@ class HistoryScreen extends StatefulWidget {
 }
 
 class _HistoryScreenState extends State<HistoryScreen> {
-
   List<PostController> _post = List<PostController>();
 
   Future<List<PostController>> getPosts() async {
-    var url = "http://localhost:8000/api/posts/get/";
+    var url = "http://localhost:8000/tasks";
 
-    var response = await http.get(url, headers: {
-      "auth-token": getToken.token
-    });
+    var response = await http
+        .get(url, headers: {"Authorization": "Bearer ${getToken.token}"});
 
     var posts = List<PostController>();
 
@@ -30,16 +28,12 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
     for (var postJson in postsJson) {
       posts.add(PostController.fromJson(postJson));
-
     }
     return posts;
   }
 
-
-
   @override
   void initState() {
-
     getPosts().then((value) {
       setState(() {
         _post.addAll(value);
@@ -47,7 +41,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
     });
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -58,10 +51,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
           ),
           backgroundColor: Colors.white,
           title: Text(
-              'Expense History',
-            style: TextStyle(
-              color: Colors.black
-            ),
+            'Expense History',
+            style: TextStyle(color: Colors.black),
           ),
         ),
         backgroundColor: Colors.white,
@@ -73,15 +64,15 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 price: (_post[index].price).toDouble(),
                 id: _post[index].id,
               ),
-              onLongPress: () => {
+              onPressed: () async {
+                var url = "http://localhost:8000/${_post[index].id}";
 
-                //TODO: HTTP DELETE REQUEST
-
+                var response = await http.delete(url,
+                    headers: {"Authorization": "Bearer ${getToken.token}"});
               },
             );
           },
           itemCount: _post.length,
-        )
-    );
+        ));
   }
 }
