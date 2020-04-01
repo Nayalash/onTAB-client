@@ -8,7 +8,7 @@ Client-Side codebase for the onTAB mobile application.
 </p>
 
 <p align="center">
-  <img src="https://github.com/Nayalash/onTAB-client/blob/master/images/app.mp4"/>
+  <img src="https://github.com/Nayalash/onTAB-client/blob/master/images/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202020-03-31%20at%2022.59.08.png" width="500" height="1000"/>
 </p>
 
 
