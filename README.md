@@ -4,7 +4,7 @@ Client-Side codebase for the onTAB mobile application.
 
 
 <p align="center">
-  <a href="https://play.google.com/store/apps/details?id=io.github.nayalash.on_tab"><img src="https://github.com/Nayalash/Nutralytics/blob/master/docs/gp.png" width = "800" height= "200"/> </a>
+  <a href="https://play.google.com/store/apps/details?id=io.github.nayalash.on_tab"><img src="https://github.com/Nayalash/Nutralytics/blob/master/docs/gp.png" width = "5000" height= "200"/> </a>
 </p>
 
 <p align="center">
