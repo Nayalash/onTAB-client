@@ -1,4 +1,4 @@
-# onTAB App
+# onTAB Mobile App
 
 Client-Side codebase for the onTAB mobile application.
 
