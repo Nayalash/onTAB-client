@@ -2,6 +2,8 @@
 
 Client-Side codebase for the onTAB mobile application.
 
+CHECK OUT THE CUSTOM BUILT BACKEND HERE -> [LINK](https://github.com/Nayalash/onTAB-server)
+
 
 <p align="center">
   <a href="https://play.google.com/store/apps/details?id=io.github.nayalash.on_tab"><img src="https://github.com/Nayalash/Nutralytics/blob/master/docs/gp.png" width = "1000" height= "200"/> </a>
