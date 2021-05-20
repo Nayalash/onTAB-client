@@ -2,7 +2,7 @@
 
 Client-Side codebase for the onTAB mobile application.
 
-CHECK OUT THE CUSTOM BUILT BACKEND HERE -> [LINK](https://github.com/Nayalash/onTAB-server)
+BACKEND CodeBase Here -> [LINK](https://github.com/Nayalash/onTAB-server)
 
 
 <p align="center">
